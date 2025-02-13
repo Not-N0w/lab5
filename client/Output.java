@@ -6,7 +6,6 @@ public class Output {
     }
     public void successfulFileDataLoaded(String path) {}
 
-
     public void out(String iString) {
         System.out.println(iString);
     }

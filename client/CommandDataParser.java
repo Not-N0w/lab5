@@ -1,10 +1,6 @@
 package client;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 import Common.Coordinates;
@@ -24,7 +20,7 @@ public class CommandDataParser {
     private Coordinates parseCoordinates(int tabs) {
         Coordinates coordinates = new Coordinates();
 
-        fieldOut(tabs, "Coordinates->");
+        System.err.println("    ".repeat(tabs) +  "Coordinates->");
         tabs += 1;
         fieldOut(tabs, "X: ");
         coordinates.setX(scanner.nextInt());
@@ -42,7 +38,7 @@ public class CommandDataParser {
     private Location parseLocation(int tabs) {
         Location location = new Location();
 
-        fieldOut(tabs, "Location->");
+       System.err.println("    ".repeat(tabs) + "Location->");
         tabs += 1;
         fieldOut(tabs, "X: ");
         location.setX(scanner.nextFloat());
@@ -58,10 +54,10 @@ public class CommandDataParser {
 
     private Person parsePerson(int tabs) {
         Person person = new Person();
-        fieldOut(tabs, "Person->");
+        System.err.println("    ".repeat(tabs) + "Person->");
         tabs += 1;
 
-        fieldOut(tabs, "Birthday: ");
+        fieldOut(tabs, "Birthday (YYYY-MM-DD): ");
         String date = scanner.next();
         person.setBirthday(dateParse(date));
 
@@ -80,7 +76,7 @@ public class CommandDataParser {
     }
 
     private void fieldOut(int tabs, String in) {
-        System.out.print( "    ".repeat(tabs) + in);
+        System.out.print("    ".repeat(tabs) + in);
     }
 
 
@@ -88,7 +84,7 @@ public class CommandDataParser {
         Ticket ticket = new Ticket();
         int tabs = 0;
 
-        fieldOut(tabs, "Ticket->");
+        System.err.println("    ".repeat(tabs) + "Ticket->");
         tabs += 1;
         fieldOut(tabs, "Name: ");
         ticket.setName(scanner.next());
