@@ -1,4 +1,4 @@
-package Ticket;
+package Common;
 
 public enum TicketType {
     VIP,

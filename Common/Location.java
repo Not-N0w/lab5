@@ -1,0 +1,48 @@
+package Common;
+
+import utils.ValueChecker;
+
+public class Location {
+
+    private Float x; //Поле не может быть null
+    private Float y; //Поле не может быть null
+    private Long z; //Поле не может быть null
+
+
+    public Location(Float x, Float y, Long z) {
+        try {
+            setX(x);
+            setY(y);
+            setZ(z);
+        } 
+        catch(IllegalArgumentException exception) {
+            throw new IllegalArgumentException( this.getClass() + ": " + exception.getMessage(), exception);
+        }
+    }
+    public Location() {}
+
+    public Float x() {
+        return this.x;
+    }
+    public Float y() {
+        return this.y;
+    }
+    public Long z() {
+        return this.z;
+    }
+
+    public void setX(Float x) {
+        ValueChecker.nullCheck(x, "x");
+        this.x = x;
+    }
+
+    public void setY(Float y) {
+        ValueChecker.nullCheck(y, "y");
+        this.y = y;
+    }
+
+    public void setZ(Long z) {
+        ValueChecker.nullCheck(z, "z");
+        this.z = z;
+    }
+}
