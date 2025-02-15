@@ -32,17 +32,25 @@ public class Location {
     }
 
     public void setX(Float x) {
-        ValueChecker.nullCheck(x, "x");
+        ValueChecker.nullCheck(x, "X");
         this.x = x;
     }
 
     public void setY(Float y) {
-        ValueChecker.nullCheck(y, "y");
+        ValueChecker.nullCheck(y, "Y");
         this.y = y;
     }
 
     public void setZ(Long z) {
-        ValueChecker.nullCheck(z, "z");
+        ValueChecker.nullCheck(z, "Z");
         this.z = z;
+    }
+    @Override
+    public String toString() {
+        String result = "Location ->\n";
+        result += "X: " + String.valueOf(x) + "\n";
+        result += "Y: " + String.valueOf(y) + "\n";
+        result += "Z: " + String.valueOf(z) + "\n";
+        return result;
     }
 }

@@ -1,5 +1,7 @@
 package Common;
 
+import java.time.LocalDateTime;
+
 import utils.ValueChecker;
 
 public class Ticket {
@@ -32,6 +34,7 @@ public class Ticket {
     }
     public Ticket() {
         this.id = nextID++;
+        this.creationDate = LocalDateTime.now();
     }
 
 
@@ -61,29 +64,42 @@ public class Ticket {
     }
 
     public void setName(String name) {
-        ValueChecker.nullCheck(name, "name");
-        ValueChecker.stringEmptyCheck(name, "name");
+        ValueChecker.nullCheck(name, "Name");
+        ValueChecker.stringEmptyCheck(name, "Name");
         this.name = name;
     }
     public void setCoordinates(Coordinates coordinates) {
-        ValueChecker.nullCheck(coordinates, "coordinates");
+        ValueChecker.nullCheck(coordinates, "Coordinates");
         this.coordinates = coordinates;
     }
     public void setPrice(int price) {
-        ValueChecker.checkLimits(price, priceLimit, null, "price");
+        ValueChecker.checkLimits(price, priceLimit, null, "Price");
         this.price = price;
     }
     public void setRfundable(Boolean refundable) {
-        ValueChecker.nullCheck(refundable, "refundable");
+        ValueChecker.nullCheck(refundable, "Refundable");
         this.refundable = refundable;
     }
     public void setType(TicketType type) {
-        ValueChecker.nullCheck(type, "type");
+        ValueChecker.nullCheck(type, "Type");
         this.type = type;
     }
     public void setPerson(Person person) {
-        ValueChecker.nullCheck(person, "person");
+        ValueChecker.nullCheck(person, "Person");
         this.person = person;
     }
 
+    @Override
+    public String toString() {
+        String result = "Ticket ->\n";
+        result += "Name: " + name + "\n";
+        result += "ID: " + String.valueOf(id) + "\n";
+        result += coordinates.toString();
+        result += "CreationDate: "+ creationDate.toString() + "\n";
+        result += "Price: " + String.valueOf(price) + "\n";
+        result += "Refundable" + String.valueOf(refundable) + "\n";
+        result += "TicketType: " + type.name() + "\n";
+        result += person.toString();
+        return result;
+    }
 }

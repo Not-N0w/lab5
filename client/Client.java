@@ -27,29 +27,40 @@ public class Client {
 
     private void commandCycle() {
         while(true) {
-            output.out("Waiting for commands");
-            String command = input.getCommand();
-            DataContainer commandData = input.getData(command);
+            output.outSub("Waiting for commands");
+            String command;
+            DataContainer commandData;
+            try {
+                command = input.getCommand();
+                commandData = input.getData(command);
+                System.out.println(commandData.toString());
+
+            } 
+            catch(IllegalArgumentException exception) {
+                output.outError(exception.getMessage());
+                output.outError("Try again\n");
+            }
+
             // send to server
         }
     }
 
     public void run() {
         try {
-            String fileData = input.getFileData();
-            ticketController.addJSONData(fileData);
-            output.successfulFileDataLoaded(filePath);
+            if(!filePath.equals("")) {
+                String fileData = input.getFileData();
+                ticketController.addJSONData(fileData);
+                output.successfulFileDataLoaded(filePath);
+            } 
+            else {
+                // make new file
+            }
         } 
         catch(FileNotFoundException exception) {
-            output.fileNotExistMessage();
-        }
-        catch(Exception exception) {
-            output.out("хз");
+            output.fileNotExistMessage(filePath);
         }
         commandCycle();
     }
     
-    void pushCommand(String command, String args) {
-        
-    }
+    private void pushCommand(String command, String args) {}
 }

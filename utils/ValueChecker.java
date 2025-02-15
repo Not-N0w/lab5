@@ -9,17 +9,17 @@ public class ValueChecker {
 
         if (limitDown == null && limitUp != null) {
             if (item.compareTo(limitUp) >= 0) { // item >= limitUp
-                message += "should be less than " + String.valueOf(limitUp);
+                message += " should be less than " + String.valueOf(limitUp);
                 throw new IllegalArgumentException(message);
             }
         } else if (limitDown != null && limitUp == null) {
             if (item.compareTo(limitDown) <= 0) { // item <= limitDown
-                message += "should be more than " + String.valueOf(limitDown);
+                message += " should be more than " + String.valueOf(limitDown);
                 throw new IllegalArgumentException(message);
             }
         } else if (limitDown != null && limitUp != null) {
             if (item.compareTo(limitDown) <= 0 || item.compareTo(limitUp) >= 0) { // item <= limitDown || item >= limitUp
-                message += "should be less than " + String.valueOf(limitUp) + "and more than " + String.valueOf(limitDown);
+                message += " should be less than " + String.valueOf(limitUp) + "and more than " + String.valueOf(limitDown);
                 throw new IllegalArgumentException(message);
             }
         }

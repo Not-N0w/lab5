@@ -43,25 +43,34 @@ public class Person {
 
 
     public void setBirthday(java.time.LocalDate birthday) {
-        ValueChecker.nullCheck(birthday, "birthday");
+        ValueChecker.nullCheck(birthday, "Birthday");
         this.birthday = birthday;
     }
 
     public void setWeight(double weight) {
-        ValueChecker.checkLimits(weight, weightLimit, null, "weight");
+        ValueChecker.checkLimits(weight, weightLimit, null, "Weight");
         this.weight = weight;
     }
 
     public void setPassportID(String passportID) {
-        ValueChecker.nullCheck(passportID, "passportID");
-        ValueChecker.stringEmptyCheck(passportID, "passportID");
+        ValueChecker.nullCheck(passportID, "PassportID");
+        ValueChecker.stringEmptyCheck(passportID, "PassportID");
         this.passportID = passportID;
     }
 
     public void setLocation(Location location) {
-        ValueChecker.nullCheck(location, "location");
+        ValueChecker.nullCheck(location, "Location");
 
         this.location = location;
+    }
+    @Override
+    public String toString() {
+        String result = "Person ->\n";
+        result += "Birthday: " + birthday.toString() + "\n";
+        result += "Weight: " + String.valueOf(weight) + "\n";
+        result += "PassportID: " + passportID + "\n";
+        result += location.toString();
+        return result;
     }
 
 }

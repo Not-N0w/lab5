@@ -35,12 +35,19 @@ public class Coordinates {
 
     
     public void setX(int x) {
-        ValueChecker.checkLimits(x, xLimit, null, "x");
+        ValueChecker.checkLimits(x, xLimit, null, "X");
         this.x = x;
     }
 
     public void setY(float y) {
-        ValueChecker.checkLimits(y, yLimit, null, "y");
+        ValueChecker.checkLimits(y, yLimit, null, "Y");
         this.y = y;
+    }
+    @Override
+    public String toString() {
+        String result = "Coordinates ->\n";
+        result += "X: " + String.valueOf(x) + "\n";
+        result += "Y: " + String.valueOf(y) + "\n";
+        return result;
     }
 }
